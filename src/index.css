@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --light-bg-color: #fff;
+  --light-text-color: #181818;
+  --light-link-color: #181818;
+  --dark-bg-color: #181818;
+  --dark-text-color: #fff;
+  --dark-link-color: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: "Quicksand", Arial, Helvetica, sans-serif;
+  background-color: var(--light-bg-color);
+  color: var(--light-text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode {
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text-color);
+}
