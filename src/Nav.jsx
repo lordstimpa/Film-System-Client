@@ -13,13 +13,14 @@ const NavContainer = Styled.div`
 const LinkContainer = Styled.div`
     margin-left: auto;
     text-decoration: none;
+
     & .nav-link {
         text-decoration: none;
         color: inherit;
         margin-right: 2em;
     }
     & .nav-link:hover {
-        color: #1dff60;
+        color: #2bff2b;
     }
 `;
 

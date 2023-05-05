@@ -5,6 +5,7 @@ import "./App.css";
 import Nav from "./Nav";
 import Home from "./Home";
 import AddPerson from "./AddPerson";
+import Person from "./Person";
 import NotFound from "./NotFound";
 
 const Main = Styled.div`
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/add-person" element={<AddPerson />} />
+            <Route path="/person/:id" element={<Person />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

@@ -14,7 +14,7 @@ body {
   font-family: "Quicksand", Arial, Helvetica, sans-serif;
   background-color: var(--light-bg-color);
   color: var(--light-text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .dark-mode {

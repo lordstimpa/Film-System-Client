@@ -1,30 +1,57 @@
 import React, { useState, useEffect } from "react";
 import Styled from "styled-components";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { CgProfile } from "react-icons/cg";
 
-const PeopleContainer = Styled.div`
-  padding: 1em;
+const PersonOuterContainer = Styled.div`
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+
+    & .person-inner-container {
+        padding-bottom: 1em;
+    }
+
+    & .person-link {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    & .person-link:hover {
+        color: #2bff2b;
+    }
 `;
 
 const People = () => {
-  const [people, setPeople] = useState({ hits: [] });
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios("https://localhost:7001/person");
-      setPeople(result.people);
+      console.log(result);
+      setData(result.data);
     };
+
     fetchData();
   }, []);
 
+  const handleClick = () => {};
+
   return (
-    <PeopleContainer>
-      {people.hits.map((person) => (
-        <h3 key={person.id_person}>
-          {person.first_name} {person.last_name}
-        </h3>
+    <PersonOuterContainer>
+      {data.map((item) => (
+        <div key={item.id_person} className="person-inner-container">
+          <Link
+            to={`/person/${item.id_person}`}
+            className="person-link"
+            onClick={handleClick}
+          >
+            <CgProfile /> {item.first_name} {item.last_name}
+          </Link>
+        </div>
       ))}
-    </PeopleContainer>
+    </PersonOuterContainer>
   );
 };
 
