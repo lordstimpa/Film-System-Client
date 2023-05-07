@@ -1,0 +1,61 @@
+{
+  "GenreImgSrc": {
+    "3": {
+      "src": "/img/action.jpg"
+    },
+    "5": {
+      "src": "/img/adventure.jpg"
+    },
+    "6": {
+      "src": "/img/animation.jpg"
+    },
+    "7": {
+      "src": "/img/comedy.jpg"
+    },
+    "8": {
+      "src": "/img/crime.jpg"
+    },
+    "10": {
+      "src": "/img/documentary.jpg"
+    },
+    "11": {
+      "src": "/img/drama.jpg"
+    },
+    "12": {
+      "src": "/img/family.jpg"
+    },
+    "13": {
+      "src": "/img/fantasy.jpg"
+    },
+    "14": {
+      "src": "/img/history.jpg"
+    },
+    "16": {
+      "src": "/img/horror.jpg"
+    },
+    "18": {
+      "src": "/img/music.jpg"
+    },
+    "19": {
+      "src": "/img/mystery.jpg"
+    },
+    "20": {
+      "src": "/img/romance.jpg"
+    },
+    "22": {
+      "src": "/img/science-fiction.jpg"
+    },
+    "23": {
+      "src": "/img/thriller.jpg"
+    },
+    "25": {
+      "src": "/img/tv-movie.jpg"
+    },
+    "26": {
+      "src": "/img/war.jpg"
+    },
+    "27": {
+      "src": "/img/western.jpg"
+    }
+  }
+}

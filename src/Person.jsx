@@ -1,9 +1,11 @@
 import Styled from "styled-components";
-import FetchData from "./FetchData";
 import { useParams } from "react-router-dom";
+import FetchData from "./FetchData";
+import Genres from "./Genres";
+import Movies from "./Movies";
 
 const PersonContainer = Styled.div`
-    padding: 1em;
+    padding: 1em 1em 0 1em;
     & .loading {
         color: #2bff2b;
         text-align: center;
@@ -15,6 +17,10 @@ const PersonContainer = Styled.div`
         text-align: center;
         font-size: 1.2em;
         padding-top: 2em;
+    }
+    & h2 {
+      margin: 1em 0 0 0;
+      color: #2bff2b;
     }
 `;
 
@@ -33,17 +39,21 @@ const Person = () => {
   );
 
   return (
-    <PersonContainer>
-      {isLoading && <div className="loading">Loading person...</div>}
-      {isError && (
-        <div className="error">ERROR: Not able to fetch person data.</div>
-      )}
-      {targetPerson && (
-        <h2>
-          {targetPerson.first_name} {targetPerson.last_name}
-        </h2>
-      )}
-    </PersonContainer>
+    <>
+      <PersonContainer>
+        {isLoading && <div className="loading">Loading person...</div>}
+        {isError && (
+          <div className="error">ERROR: Not able to fetch person data.</div>
+        )}
+        {targetPerson && (
+          <h2>
+            {targetPerson.first_name} {targetPerson.last_name}
+          </h2>
+        )}
+      </PersonContainer>
+      <Genres />
+      <Movies />
+    </>
   );
 };
 

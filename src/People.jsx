@@ -41,9 +41,9 @@ const People = () => {
 
   return (
     <PersonOuterContainer>
-      {isLoading && <div className="loading">Loading people...</div>}
+      {isLoading && <p className="loading">Loading people...</p>}
       {isError && (
-        <div className="error">ERROR: Not able to fetch people data.</div>
+        <p className="error">ERROR: Not able to fetch people data.</p>
       )}
       {people &&
         people.map((item) => (
