@@ -1,20 +1,23 @@
 import Styled from "styled-components";
 import { useParams } from "react-router-dom";
 import FetchData from "./FetchData";
-import genreImages from "./genre-img.json";
+import GenreImages from "./genre-img.json";
+import AddGenre from "./AddGenre";
 
 const Main = Styled.div`
-    padding: 1em;
+    padding: 1em 2.5em;
+    background-color: rgba(213, 33, 208, .1);
 `;
 const GenreParent = Styled.div`
     display: flex;
+    justify-content: space-around;
 `;
 const GenreChild = Styled.div`
     position: relative;
-    margin: 0.5em;
     border: 0.5px solid;
     width: 20em;
-    height: 18em;
+    height: 13.5em;
+    margin: 0.5em;
     text-align: center;
     background-color: black;
     overflow: hidden;
@@ -36,11 +39,11 @@ const GenreChild = Styled.div`
       height: 100%;
       object-fit: cover;
       opacity: 0.7;
-      filter: blur(5px);
-        -webkit-filter: blur(5px);
-        -moz-filter: blur(5px);
-        -o-filter: blur(5px);
-        -ms-filter: blur(5px);
+      filter: blur(2px);
+        -webkit-filter: blur(2px);
+        -moz-filter: blur(2px);
+        -o-filter: blur(2px);
+        -ms-filter: blur(2px);
     }
 `;
 
@@ -53,7 +56,7 @@ const Genres = () => {
   } = FetchData("https://localhost:7001/persongenre/" + id);
 
   const GetImage = (id) => {
-    const imageSrc = genreImages.GenreImgSrc[id].src;
+    const imageSrc = GenreImages.GenreImgSrc[id].src;
     if (imageSrc) {
       return imageSrc;
     } else {
@@ -63,7 +66,9 @@ const Genres = () => {
 
   return (
     <Main>
-      <h3>Favourite Genres</h3>
+      <h3>Genres</h3>
+      <AddGenre />
+      <h4>Favourite genres</h4>
       {isLoading && <p className="loading">Loading genres...</p>}
       {isError && <p className="error">ERROR: Not able to fetch genres.</p>}
       <GenreParent>

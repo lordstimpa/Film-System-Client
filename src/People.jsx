@@ -13,7 +13,7 @@ const PersonOuterContainer = Styled.div`
     & .person-link {
         text-decoration: none;
         color: inherit;
-        font-size: 1.2em;
+        font-size: 1.1em;
     } 
     & .person-link:hover {
         color: #2bff2b;

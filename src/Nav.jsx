@@ -6,8 +6,13 @@ import SunMoon from "./assets/day-and-night.png";
 const NavContainer = Styled.div`
     display: flex;
     align-items: center;
-    border-bottom: 0.5px solid;
     padding: 1em;
+    border-image: linear-gradient(315deg, #1182E1, #D521D0) 30;
+    border-width: 0.5em;
+    border-style: solid;
+    border-top:0;
+    border-left:0;
+    border-right:0;
 `;
 
 const LinkContainer = Styled.div`

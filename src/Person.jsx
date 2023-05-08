@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import FetchData from "./FetchData";
 import Genres from "./Genres";
 import Movies from "./Movies";
+import { AiOutlineMail } from "react-icons/ai";
 
-const PersonContainer = Styled.div`
-    padding: 1em 1em 0 1em;
+const PersonParent = Styled.div`
+    padding: 1em 2.5em;
     & .loading {
         color: #2bff2b;
         text-align: center;
@@ -18,10 +19,18 @@ const PersonContainer = Styled.div`
         font-size: 1.2em;
         padding-top: 2em;
     }
-    & h2 {
-      margin: 1em 0 0 0;
-      color: #2bff2b;
+    & p {
+      font-size: 0.9em;
     }
+`;
+
+const SectionParent = Styled.div`
+    border-image: linear-gradient(315deg, #1182E1, #D521D0) 30;
+    border-width: 0.25em;
+    border-style: solid;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
 `;
 
 const Person = () => {
@@ -40,19 +49,26 @@ const Person = () => {
 
   return (
     <>
-      <PersonContainer>
+      <PersonParent>
         {isLoading && <div className="loading">Loading person...</div>}
         {isError && (
           <div className="error">ERROR: Not able to fetch person data.</div>
         )}
         {targetPerson && (
-          <h2>
-            {targetPerson.first_name} {targetPerson.last_name}
-          </h2>
+          <div className="personbanner">
+            <h2>
+              {targetPerson.first_name} {targetPerson.last_name}
+            </h2>
+            <p>
+              <AiOutlineMail /> {targetPerson.email}
+            </p>
+          </div>
         )}
-      </PersonContainer>
-      <Genres />
-      <Movies />
+      </PersonParent>
+      <SectionParent>
+        <Genres />
+        <Movies />
+      </SectionParent>
     </>
   );
 };
