@@ -43,23 +43,27 @@ const Form = Styled.form`
 `;
 
 const AddPerson = () => {
+  const PostPerson = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Banner>
         <h2>Add New Person</h2>
       </Banner>
-      <Form>
+      <Form onSubmit={PostPerson}>
         <div className="TextInput">
-          <label>First name:</label>
-          <input type="text"></input>
+          <label>First name*</label>
+          <input type="text" required></input>
         </div>
         <div className="TextInput">
-          <label>Last name:</label>
-          <input type="text"></input>
+          <label>Last name*</label>
+          <input type="text" required></input>
         </div>
         <div className="TextInput">
-          <label>Email:</label>
-          <input type="text"></input>
+          <label>Email*</label>
+          <input type="text" required></input>
         </div>
         <div className="Submit">
           <input type="submit" value="Add Person"></input>

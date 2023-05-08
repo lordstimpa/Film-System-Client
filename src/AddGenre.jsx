@@ -1,4 +1,6 @@
 import Styled from "styled-components";
+import { useParams } from "react-router-dom";
+import FetchData from "./FetchData";
 
 const Main = Styled.div`
   display: flex;
@@ -9,10 +11,9 @@ const Main = Styled.div`
     padding: 0.5em;
     background: rgba(213, 33, 208, .5);
     font-size: 1em;
-    cursor: pointer;
   }
-  & select {
-    width: 100%;
+  & input[type=submit] {
+    cursor: pointer;
   }
   & div {
     display: flex;
@@ -23,16 +24,31 @@ const Main = Styled.div`
 `;
 
 const AddGenre = () => {
+  const { id } = useParams();
+  const { data: genres } = FetchData(
+    "https://localhost:7001/persongenre/" + id
+  );
+
+  const PostGenre = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Main>
-      <form>
+      <form onSubmit={PostGenre}>
         <p>Add a new favourite genre below:</p>
         <div>
           <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="fiat">Fiat</option>
-            <option value="audi">Audi</option>
+            <option hidden disabled selected value>
+              {" "}
+              Genres{" "}
+            </option>
+            {genres &&
+              genres.map((genre) => (
+                <option value={genre.genre.title} required>
+                  {genre.genre.title}
+                </option>
+              ))}
           </select>
           <input type="submit" value="Add Genre"></input>
         </div>

@@ -6,7 +6,6 @@ import AddGenre from "./AddGenre";
 
 const Main = Styled.div`
     padding: 1em 2.5em;
-    background-color: rgba(213, 33, 208, .1);
 `;
 const GenreParent = Styled.div`
     display: flex;
