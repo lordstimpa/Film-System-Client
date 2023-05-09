@@ -56,13 +56,15 @@ const Movies = () => {
               {movierating &&
                 movierating
                   .filter((rating) => rating.fk_movie === movie.id_movie)
-                  .map((rating) => <h3>Rating: {rating.rating} / 10</h3>)}
+                  .map((rating) => (
+                    <h3 key={rating.id_rating}>Rating: {rating.rating} / 10</h3>
+                  ))}
               {!movierating.some(
                 (rating) => rating.fk_movie === movie.id_movie
               ) && (
                 <form>
-                  <select required onChange={PostRating}>
-                    <option hidden disabled selected value>
+                  <select required defaultValue="" onChange={PostRating}>
+                    <option hidden disabled value="">
                       {" "}
                       Rate{" "}
                     </option>

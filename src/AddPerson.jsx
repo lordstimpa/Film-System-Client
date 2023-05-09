@@ -1,4 +1,5 @@
 import Styled from "styled-components";
+import { useState } from "react";
 
 const Banner = Styled.div`
   padding: 1em 2.5em;
@@ -43,6 +44,10 @@ const Form = Styled.form`
 `;
 
 const AddPerson = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+
   const PostPerson = (e) => {
     e.preventDefault();
   };

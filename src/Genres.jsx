@@ -9,14 +9,15 @@ const Main = Styled.div`
 `;
 const GenreParent = Styled.div`
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 `;
 const GenreChild = Styled.div`
     position: relative;
-    border: 0.5px solid;
-    width: 20em;
-    height: 13.5em;
-    margin: 0.5em;
+    border: 1px solid;
+    max-width: 14em;
+    min-height: 14em;
+    margin: 1em;
     text-align: center;
     background-color: black;
     overflow: hidden;
@@ -49,7 +50,7 @@ const GenreChild = Styled.div`
 const Genres = () => {
   const { id } = useParams();
   const {
-    data: genres,
+    data: personGenres,
     isError,
     isLoading,
   } = FetchData("https://localhost:7001/persongenre/" + id);
@@ -71,8 +72,8 @@ const Genres = () => {
       {isLoading && <p className="loading">Loading genres...</p>}
       {isError && <p className="error">ERROR: Not able to fetch genres.</p>}
       <GenreParent>
-        {genres &&
-          genres.map((genre) => (
+        {personGenres &&
+          personGenres.map((genre) => (
             <GenreChild key={genre.genre.id_genre}>
               <img
                 src={GetImage(genre.genre.id_genre)}
