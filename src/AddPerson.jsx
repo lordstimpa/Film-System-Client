@@ -28,11 +28,11 @@ const Form = Styled.form`
     padding: 0.5em;
     font-size: 1.1em;
     transition: 0.5s ease;
-    background-color: rgb(128,0,128);
-    color: white;
+    background-color: rgba(17,130,225,1);
     :hover {
       cursor: pointer;
-      background-color: #D521D0;
+      background-color: rgba(17,130,225,0.5);
+      color: white;
     }
   }
   & label {

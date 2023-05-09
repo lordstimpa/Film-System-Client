@@ -23,11 +23,11 @@ const Main = Styled.div`
     & input[type=submit] {
       margin-top: auto;
       transition: 0.5s ease;
-      background-color: rgb(128,0,128);
-      color: white;
+      background-color: rgba(17,130,225,1);
       :hover {
         cursor: pointer;
-        background-color: #D521D0;
+        background-color: rgba(17,130,225,0.5);
+        color: white;
       }
     }
   }

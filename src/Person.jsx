@@ -24,15 +24,6 @@ const PersonParent = Styled.div`
     }
 `;
 
-const SectionParent = Styled.div`
-    border-image: linear-gradient(315deg, #1182E1, #D521D0) 30;
-    border-width: 0.25em;
-    border-style: solid;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
-`;
-
 const Person = () => {
   // Get id of person from url parameter
   const { id } = useParams();
@@ -65,10 +56,9 @@ const Person = () => {
           </div>
         )}
       </PersonParent>
-      <SectionParent>
-        <Genres />
-        <Movies />
-      </SectionParent>
+
+      <Genres />
+      <Movies />
     </>
   );
 };

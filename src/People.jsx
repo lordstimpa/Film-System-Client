@@ -8,15 +8,17 @@ const PersonOuterContainer = Styled.div`
     flex-direction: column;
     text-decoration: none;
     & .person-inner-container {
-        padding-bottom: 1em;
+        padding-right: 1.5em;;
+        margin: 0.5em;
     }
     & .person-link {
         text-decoration: none;
         color: inherit;
         font-size: 1.1em;
+        transition: 0.3s ease;
     } 
     & .person-link:hover {
-        color: #2bff2b;
+      color: #D521D0;
     }
     & .loading {
         color: #2bff2b;

@@ -4,28 +4,42 @@ import { useParams } from "react-router-dom";
 import AddMovie from "./AddMovie";
 
 const Main = Styled.div`
-    padding: 1em 2.5em;
+    margin: 1.5em 2.5em;
+    border-image: linear-gradient(315deg, #1182E1, #D521D0) 30;
+    border-width: 0.25em;
+    border-style: solid;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
 `;
 const MovieParent = Styled.div`
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between;
 `;
 const MovieChild = Styled.div`
-    padding: 0.7em;
-    margin: 0.5em;
-    border: 0.5px solid;
-    width: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid;
+    margin: 1em 0.2em;
     text-align: center;
-    font-size: 0.6em;
+    width: 9em;
+    min-height: 7em;
+    & h5 {
+      font-size: 0.7em;
+    }
     & select {
       border: 1px solid;
-      padding: 0.5em;
       background: rgba(203, 236, 16, 0.5);
-      font-size: 1.1em;
+      font-size: 0.9em;
+      margin-bottom: 1em;
   }
 `;
 
 const Movies = () => {
+  // Id of person
   const { id } = useParams();
   const {
     data: movies,
@@ -37,8 +51,14 @@ const Movies = () => {
     "https://localhost:7001/movierating/" + id
   );
 
-  const PostRating = (e) => {
-    e.preventDefault();
+  const PostRating = (ratingData) => {
+    fetch("https://localhost:7001/movierating", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(ratingData),
+    }).then(() => {
+      window.location.reload();
+    });
   };
 
   return (
@@ -52,21 +72,31 @@ const Movies = () => {
         {movies &&
           movies.map((movie) => (
             <MovieChild key={movie.id_movie}>
-              <h3>{movie.title}</h3>
+              <h5>{movie.title}</h5>
               {movierating &&
                 movierating
                   .filter((rating) => rating.fk_movie === movie.id_movie)
                   .map((rating) => (
-                    <h3 key={rating.id_rating}>Rating: {rating.rating} / 10</h3>
+                    <h5 key={rating.id_rating}>Rating: {rating.rating} / 10</h5>
                   ))}
               {!movierating.some(
                 (rating) => rating.fk_movie === movie.id_movie
               ) && (
                 <form>
-                  <select required defaultValue="" onChange={PostRating}>
+                  <select
+                    required
+                    defaultValue=""
+                    onChange={(e) => {
+                      const ratingData = {
+                        fk_movie: movie.id_movie,
+                        fk_person: parseInt(id),
+                        rating: parseInt(e.target.value),
+                      };
+                      PostRating(ratingData);
+                    }}
+                  >
                     <option hidden disabled value="">
-                      {" "}
-                      Rate{" "}
+                      Rate
                     </option>
                     <option value="1">1</option>
                     <option value="2">2</option>

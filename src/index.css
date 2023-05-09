@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
 
 :root {
-  --light-bg-color: rgba(191, 161, 228, 0.2);
-  --light-text-color: #181818;
-  --light-link-color: #181818;
+  --light-bg-color: rgba(191, 161, 228, 0.075);
+  --light-text-color: rgb(33, 9, 63);
+  --light-link-color: rgb(33, 9, 63);
   --dark-bg-color: #181818;
   --dark-text-color: rgba(191, 161, 228, 1);
   --dark-link-color: rgba(191, 161, 228, 1);
@@ -16,6 +16,8 @@ h3,
 h4,
 h5 {
   font-family: "Quicksand", Arial, Helvetica, sans-serif;
+  color: inherit;
+  filter: brightness(1.2);
 }
 
 body {

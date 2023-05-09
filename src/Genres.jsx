@@ -5,7 +5,13 @@ import GenreImages from "./genre-img.json";
 import AddGenre from "./AddGenre";
 
 const Main = Styled.div`
-    padding: 1em 2.5em;
+    margin: 0 2.5em 1.5em 2.5em;
+    border-image: linear-gradient(315deg, #1182E1, #D521D0) 30;
+    border-width: 0.25em;
+    border-style: solid;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
 `;
 const GenreParent = Styled.div`
     display: flex;
@@ -17,7 +23,7 @@ const GenreChild = Styled.div`
     border: 1px solid;
     max-width: 16em;
     min-height: 14em;
-    margin: 1em;
+    margin: 1em 0.2em;
     text-align: center;
     background-color: black;
     overflow: hidden;
