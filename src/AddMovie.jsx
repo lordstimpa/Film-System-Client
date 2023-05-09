@@ -22,7 +22,13 @@ const Main = Styled.div`
     }
     & input[type=submit] {
       margin-top: auto;
-      cursor: pointer;
+      transition: 0.5s ease;
+      background-color: rgb(128,0,128);
+      color: white;
+      :hover {
+        cursor: pointer;
+        background-color: #D521D0;
+      }
     }
   }
 `;
@@ -94,7 +100,7 @@ const AddMovie = () => {
         </p>
         <p>
           Copy the webpage URL of your movie and paste it in the{" "}
-          <strong>third</strong> input field above.
+          <strong>second</strong> input field above.
         </p>
       </form>
     </Main>

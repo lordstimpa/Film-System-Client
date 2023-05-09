@@ -2,17 +2,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
 
 :root {
-  --light-bg-color: #fff;
+  --light-bg-color: rgba(191, 161, 228, 0.2);
   --light-text-color: #181818;
   --light-link-color: #181818;
   --dark-bg-color: #181818;
-  --dark-text-color: #fff;
-  --dark-link-color: #fff;
+  --dark-text-color: rgba(191, 161, 228, 1);
+  --dark-link-color: rgba(191, 161, 228, 1);
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5 {
   font-family: "Quicksand", Arial, Helvetica, sans-serif;
 }
 

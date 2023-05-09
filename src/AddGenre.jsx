@@ -15,7 +15,13 @@ const Main = Styled.div`
     font-size: 1em;
   }
   & input[type=submit] {
-    cursor: pointer;
+    transition: 0.5s ease;
+    background-color: rgb(128,0,128);
+    color: white;
+    :hover {
+      cursor: pointer;
+      background-color: #D521D0;
+    }
   }
   & div {
     display: flex;

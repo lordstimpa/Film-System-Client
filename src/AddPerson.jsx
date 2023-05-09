@@ -1,5 +1,6 @@
 import Styled from "styled-components";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Banner = Styled.div`
   padding: 1em 2.5em;
@@ -8,48 +9,67 @@ const Banner = Styled.div`
 const Form = Styled.form`
   display: flex;
   flex-direction: column;
-  background: RGBA(213, 33, 208, .1);
+  margin: 0 2.5em;
   border-image: linear-gradient(315deg, #D521D0, #1182E1) 30;
-  border-width: 0.2em;
+  border-width: 0.25em;
   border-style: solid;
-  & .TextInput {
-    display: flex;
-    margin: 1em;
-    & label {
-      display: inline-block;
-      font-size: 1.1em;
-      margin-right: 1em;
-      padding: 0.5em;
-      width: 5.5em;
-    }
-    & input {
-      padding: 0.5em;
-      width: 75%;
-      background: rgba(17, 130, 225, .5);
+  & input[type=text] {
+    width: 80%;
+    margin: 0.5em 1em;
+    padding: 0.5em;
+    align-self: center;
+    color: white;
+    background: rgba(213, 33, 208, .5);
+  }
+  & input[type=submit] {
+    width: 50%;
+    margin: 1.5em 1em;
+    align-self: center;
+    padding: 0.5em;
+    font-size: 1.1em;
+    transition: 0.5s ease;
+    background-color: rgb(128,0,128);
+    color: white;
+    :hover {
+      cursor: pointer;
+      background-color: #D521D0;
     }
   }
-  & .Submit {
-      width: 40%;
-      align-self: center;
-      text-align: center;
-      margin-bottom: 1em;
-      & input {
-        width: 100%;
-        background: rgba(17, 130, 225, .5);
-        border: 1px solid;
-        color: inherit;
-        padding: 0.5em;
-      }
-    }
+  & label {
+    width: 80%;
+    margin: 1.5em 1em 0 1em;
+    align-self: center;
+    font-size: 1.1em;
+  }
 `;
 
 const AddPerson = () => {
+  // UseState for assigning data used for post request
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  // Loading state
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const PostPerson = (e) => {
     e.preventDefault();
+    setLoading(true);
+
+    const Movie = {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+    };
+
+    fetch("https://localhost:7001/person", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(Movie),
+    }).then(() => {
+      setLoading(false);
+      navigate("/");
+    });
   };
 
   return (
@@ -58,21 +78,31 @@ const AddPerson = () => {
         <h2>Add New Person</h2>
       </Banner>
       <Form onSubmit={PostPerson}>
-        <div className="TextInput">
-          <label>First name*</label>
-          <input type="text" required></input>
-        </div>
-        <div className="TextInput">
-          <label>Last name*</label>
-          <input type="text" required></input>
-        </div>
-        <div className="TextInput">
-          <label>Email*</label>
-          <input type="text" required></input>
-        </div>
-        <div className="Submit">
-          <input type="submit" value="Add Person"></input>
-        </div>
+        <label>First name*</label>
+        <input
+          type="text"
+          required
+          onChange={(e) => setFirstName(e.target.value)}
+        ></input>
+
+        <label>Last name*</label>
+        <input
+          type="text"
+          required
+          onChange={(e) => setLastName(e.target.value)}
+        ></input>
+
+        <label>Email*</label>
+        <input
+          type="text"
+          required
+          onChange={(e) => setEmail(e.target.value)}
+        ></input>
+
+        {!loading && <input type="submit" value="Add Person"></input>}
+        {loading && (
+          <input type="submit" disabled value="Adding Person..."></input>
+        )}
       </Form>
     </>
   );

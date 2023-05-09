@@ -10,12 +10,12 @@ const Main = Styled.div`
 const GenreParent = Styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
 `;
 const GenreChild = Styled.div`
     position: relative;
     border: 1px solid;
-    max-width: 14em;
+    max-width: 16em;
     min-height: 14em;
     margin: 1em;
     text-align: center;
