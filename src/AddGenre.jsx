@@ -29,6 +29,9 @@ const AddGenre = () => {
   // UseState for assigning data used for post request
   const [fk_genre, setGenre] = useState("");
   const [fk_person, setPerson] = useState("");
+  // Loading state
+  const [loading, setLoading] = useState(false);
+  // Id of person
   const { id } = useParams();
 
   // Get all genres
@@ -40,9 +43,8 @@ const AddGenre = () => {
 
   // Post new favourite genre
   const PostGenre = (e) => {
-    e.preventDefault();
+    setLoading(true);
     setPerson(id);
-
     const selectedGenreId = e.target.querySelector("select").value;
 
     const Genre = {
@@ -50,10 +52,12 @@ const AddGenre = () => {
       fk_genre: parseInt(selectedGenreId),
     };
 
-    fetch("https://localhost:7001/persongenre/", {
+    fetch("https://localhost:7001/persongenre", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Genre),
+    }).then(() => {
+      setLoading(false);
     });
   };
 
@@ -86,7 +90,10 @@ const AddGenre = () => {
                 );
               })}
           </select>
-          <input type="submit" value="Add Genre"></input>
+          {!loading && <input type="submit" value="Add Genre"></input>}
+          {loading && (
+            <input type="submit" disabled value="Adding Genre..."></input>
+          )}
         </div>
       </form>
     </Main>

@@ -1,4 +1,6 @@
 import Styled from "styled-components";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Main = Styled.div`
   display: flex;
@@ -26,8 +28,33 @@ const Main = Styled.div`
 `;
 
 const AddMovie = () => {
+  // UseState for assigning data used for post request
+  const [fk_person, setPerson] = useState("");
+  const [title, setTitle] = useState("");
+  const [link, setLink] = useState("");
+  // Loading state
+  const [loading, setLoading] = useState(false);
+  // Id of person
+  const { id } = useParams();
+
+  // Post new movie
   const PostMovie = (e) => {
-    e.preventDefault();
+    setLoading(true);
+    setPerson(id);
+
+    const Movie = {
+      fk_person: parseInt(id),
+      title: title,
+      link: link,
+    };
+
+    fetch("https://localhost:7001/movie-person", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(Movie),
+    }).then(() => {
+      setLoading(false);
+    });
   };
 
   return (
@@ -37,14 +64,25 @@ const AddMovie = () => {
         <div className="ParentContainer">
           <div className="ChildContainer">
             <label>Movie Title*</label>
-            <input type="text" required></input>
+            <input
+              type="text"
+              required
+              onChange={(e) => setTitle(e.target.value)}
+            ></input>
           </div>
           <div className="ChildContainer">
             <label>TMDB Movie URL*</label>
-            <input type="text" required></input>
+            <input
+              type="text"
+              required
+              onChange={(e) => setLink(e.target.value)}
+            ></input>
           </div>
           <div className="ChildContainer">
-            <input type="submit" value="Add Movie"></input>
+            {!loading && <input type="submit" value="Add Movie"></input>}
+            {loading && (
+              <input type="submit" disabled value="Adding Movie..."></input>
+            )}
           </div>
         </div>
         <p>
