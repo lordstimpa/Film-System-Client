@@ -20,7 +20,14 @@ const Main = Styled.div`
     width: 100px;
   }
   & .pLink {
-    margin: 0 0.5vw;
+    margin: 0 0.8vw;
+  }
+  & .logo {
+    color: black;
+    font-size: 1.5em;
+  }
+  & p {
+    margin: 0 0 0.5em 0;
   }
 `;
 
@@ -29,23 +36,23 @@ const Footer = () => {
     <Main>
       <div className="Parent">
         <div className="Child">
+          <p>© 2023 Steven Dalfall,</p>
+          <p>All Rights reserved.</p>
+        </div>
+        <div className="Child">
           <a href="https://www.themoviedb.org/">
             <img src={tmdbImg}></img>
           </a>
         </div>
         <div className="Child">
-          <p>© 2023 Steven Dalfall,</p>
-          <p>All Rights reserved.</p>
-        </div>
-        <div className="Child">
           <a href="https://github.com/lordstimpa" className="pLink">
-            <BsGithub />
+            <BsGithub className="logo" />
           </a>
           <a
             href="https://www.linkedin.com/in/steven-dalfall-54223b131/"
             className="pLink"
           >
-            <BsLinkedin />
+            <BsLinkedin className="logo" />
           </a>
         </div>
       </div>
